@@ -1,0 +1,19 @@
+.theme-toggle {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-hover);
+  transform: scale(1.08);
+}

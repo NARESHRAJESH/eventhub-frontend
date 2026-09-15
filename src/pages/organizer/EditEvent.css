@@ -1,0 +1,183 @@
+/* ============================================
+   EDIT EVENT PAGE — Rose + Slate theme
+   ============================================ */
+
+.edit-event-page {
+  min-height: 100vh;
+  background: var(--bg-soft);
+  padding: 48px 24px;
+  transition: background var(--t);
+}
+
+.edit-event-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.edit-event-header {
+  margin-bottom: 32px;
+}
+
+.edit-event-header h1 {
+  margin: 0 0 6px;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.edit-event-header p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* FORM CARD */
+.edit-event-container .event-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: all var(--t);
+}
+
+/* FORM GROUP */
+.edit-event-container .form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 22px;
+}
+
+.edit-event-container .form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.edit-event-container .form-group input,
+.edit-event-container .form-group select,
+.edit-event-container .form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+  transition: all var(--t-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-event-container .form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.edit-event-container .form-group input:focus,
+.edit-event-container .form-group select:focus,
+.edit-event-container .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+}
+
+.edit-event-container .form-group select {
+  cursor: pointer;
+}
+
+/* File input */
+.edit-event-container .form-group input[type="file"] {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.edit-event-container .form-group input[type="file"]::file-selector-button {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: all var(--t-fast);
+  font-family: inherit;
+}
+
+.edit-event-container
+  .form-group
+  input[type="file"]::file-selector-button:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+}
+
+.edit-event-container .form-group small {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* FORM ROW */
+.edit-event-container .form-row {
+  display: flex;
+  gap: 20px;
+}
+
+/* UPDATE BUTTON */
+.update-event-btn {
+  width: 100%;
+  border: none;
+  background: var(--gradient);
+  color: #fff;
+  padding: 15px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all var(--t);
+  box-shadow: var(--shadow-primary);
+  font-family: inherit;
+}
+
+.update-event-btn:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(225, 29, 72, 0.35);
+}
+
+.update-event-btn:active {
+  transform: translateY(0);
+}
+
+/* LOADING */
+.edit-event-page > h2 {
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 100px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .edit-event-page {
+    padding: 32px 16px;
+  }
+
+  .edit-event-header h1 {
+    font-size: 28px;
+  }
+
+  .edit-event-container .event-form {
+    padding: 24px;
+  }
+
+  .edit-event-container .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

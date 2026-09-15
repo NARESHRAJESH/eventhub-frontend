@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./BookingConfirm.css";
+import { API_URL } from "../config";
 
 function BookingConfirm() {
   const { id } = useParams();
@@ -16,9 +17,8 @@ function BookingConfirm() {
 
   const fetchEvent = async () => {
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/events/${id}/`,
-      );
+      const response = awaitaxios.get(`${API_URL}/api/events/${id}/`);
+
       setEvent(response.data);
     } catch (error) {
       console.error("Error fetching event:", error);
@@ -42,7 +42,7 @@ function BookingConfirm() {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/bookings/", {
+      const response = await axios.post(`${API_URL}/api/bookings/`, {
         event: event.id,
         tickets: quantity,
       });
@@ -78,10 +78,7 @@ function BookingConfirm() {
         <div className="booking-confirm-content">
           <div className="confirm-event">
             {event.image && (
-              <img
-                src={`http://127.0.0.1:8000${event.image}`}
-                alt={event.title}
-              />
+              <img src={`${API_URL}${event.image}`} alt={event.title} />
             )}
 
             <h2>{event.title}</h2>

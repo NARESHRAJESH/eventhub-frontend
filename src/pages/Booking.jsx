@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./Booking.css";
+import { API_URL } from "../config";
 
 function Booking() {
-
   const { id } = useParams();
 
   const [event, setEvent] = useState(null);
@@ -16,12 +16,9 @@ function Booking() {
 
   const fetchEvent = async () => {
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/events/${id}/`
-      );
+      const response = await axios.get(`${API_URL}/api/my-bookings/`);
 
       setEvent(response.data);
-
     } catch (error) {
       console.error("Error fetching event:", error);
     }
@@ -35,19 +32,15 @@ function Booking() {
 
   return (
     <div className="booking-page">
-
       <div className="booking-container">
-
         <div className="booking-header">
           <h1>Book Your Tickets</h1>
           <p>Complete your booking for the event</p>
         </div>
 
         <div className="booking-content">
-
           {/* Event Information */}
           <div className="booking-event">
-
             {event.image && (
               <img
                 src={`http://127.0.0.1:8000${event.image}`}
@@ -70,16 +63,11 @@ function Booking() {
 
             <h3>Ticket Price</h3>
 
-            <p className="price">
-              ₹{event.price}
-            </p>
-
+            <p className="price">₹{event.price}</p>
           </div>
-
 
           {/* Booking Summary */}
           <div className="booking-summary">
-
             <h2>Booking Summary</h2>
 
             <label>Number of Tickets</label>
@@ -95,50 +83,32 @@ function Booking() {
               <option value={5}>5 Tickets</option>
             </select>
 
-
             <div className="summary-row">
               <span>Ticket Price</span>
 
-              <span>
-                ₹{event.price}
-              </span>
+              <span>₹{event.price}</span>
             </div>
-
 
             <div className="summary-row">
               <span>Quantity</span>
 
-              <span>
-                {quantity}
-              </span>
+              <span>{quantity}</span>
             </div>
 
-
             <hr />
-
 
             <div className="total-row">
               <span>Total Amount</span>
 
-              <strong>
-                ₹{totalAmount}
-              </strong>
+              <strong>₹{totalAmount}</strong>
             </div>
 
-
-            <Link
-              to={`/booking/${event.id}/confirm`}
-              className="confirm-btn"
-            >
+            <Link to={`/booking/${event.id}/confirm`} className="confirm-btn">
               Continue Booking
             </Link>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

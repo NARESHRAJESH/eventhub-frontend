@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./EventDetails.css";
+import { API_URL } from "../config";
 
 function EventDetails() {
   const { id } = useParams();
@@ -15,9 +16,7 @@ function EventDetails() {
 
   const fetchEvent = async () => {
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/events/${id}/`,
-      );
+      const response = await axios.get(`${API_URL}/api/events/${id}/`);
 
       setEvent(response.data);
       setLoading(false);
@@ -49,10 +48,7 @@ function EventDetails() {
       <div className="event-details-container">
         <div className="event-details-image">
           {event.image ? (
-            <img
-              src={`http://127.0.0.1:8000${event.image}`}
-              alt={event.title}
-            />
+            <img src={`${API_URL}${event.image}`} alt={event.title} />
           ) : (
             <div className="no-event-image">{event.category}</div>
           )}

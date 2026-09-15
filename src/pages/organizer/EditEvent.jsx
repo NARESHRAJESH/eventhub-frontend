@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./EditEvent.css";
+import { API_URL } from "../../config"; // ← rendu dot
 
 function EditEvent() {
   const { id } = useParams();
@@ -28,9 +29,7 @@ function EditEvent() {
 
   const fetchEvent = async () => {
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/events/${id}/`,
-      );
+      const response = await axios.get(`${API_URL}/api/events/${id}/`);
 
       setEventData({
         title: response.data.title || "",
@@ -89,7 +88,7 @@ function EditEvent() {
         formData.append("image", eventData.image);
       }
 
-      await axios.put(`http://127.0.0.1:8000/api/events/${id}/`, formData);
+      await axios.put(`${API_URL}/api/events/${id}/`, formData);
 
       alert("Event updated successfully!");
 

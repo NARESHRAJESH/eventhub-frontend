@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Events.css";
+import { API_URL } from "../config";
 
 function Events() {
-
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -13,12 +13,9 @@ function Events() {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/events/"
-      );
+      const response = await axios.get(`${API_URL}/api/events/`);
 
       setEvents(response.data);
-
     } catch (error) {
       console.error("Error fetching events:", error);
     }
@@ -26,20 +23,14 @@ function Events() {
 
   return (
     <div className="events-page">
-
       <section className="events-header">
         <h1>Explore Events</h1>
         <p>Discover events happening around you</p>
       </section>
 
       <section className="events-container">
-
         <div className="filter-bar">
-
-          <input
-            type="text"
-            placeholder="Search events..."
-          />
+          <input type="text" placeholder="Search events..." />
 
           <select>
             <option>All Categories</option>
@@ -59,29 +50,20 @@ function Events() {
             <option>Hyderabad</option>
             <option>Delhi</option>
           </select>
-
         </div>
 
         <div className="events-grid">
-
           {events.map((event) => (
             <div className="event-card" key={event.id}>
-
               <div className="event-image">
-
                 {event.image && (
-                  <img
-                    src={`http://127.0.0.1:8000${event.image}`}
-                    alt={event.title}
-                  />
+                  <img src={`${API_URL}${event.image}`} alt={event.title} />
                 )}
 
                 <span>{event.category}</span>
-              
               </div>
 
               <div className="event-info">
-
                 <h3>{event.title}</h3>
 
                 <p>📅 {event.date}</p>
@@ -89,7 +71,6 @@ function Events() {
                 <p>📍 {event.location}</p>
 
                 <div className="event-bottom">
-
                   <div>
                     <strong>₹{event.price}</strong>
                     <small>{event.seats} seats available</small>
@@ -101,18 +82,12 @@ function Events() {
                   >
                     View Details
                   </Link>
-
                 </div>
-
               </div>
-
             </div>
           ))}
-
         </div>
-
       </section>
-
     </div>
   );
 }

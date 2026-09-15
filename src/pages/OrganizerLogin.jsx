@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";   // same styling reuse pannalam
+import "./Login.css";
+import { API_URL } from "../config";
+// same styling reuse pannalam
 
 function OrganizerLogin() {
   const navigate = useNavigate();
@@ -13,14 +15,11 @@ function OrganizerLogin() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/login/",
-        {
-          username: username,
-          password: password,
-          expected_role: "organizer",   // backend rejects non-organizers
-        }
-      );
+      const response = await axios.post(`${API_URL}/api/login/`, {
+        username: username,
+        password: password,
+        expected_role: "organizer", // backend rejects non-organizers
+      });
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("username", response.data.username);

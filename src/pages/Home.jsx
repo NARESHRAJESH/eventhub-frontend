@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../config";
 import "./Home.css";
 
 function Home() {
@@ -12,8 +13,7 @@ function Home() {
 
   const getEvents = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/events/");
-
+      const response = await axios.get(`${API_URL}/api/events/`);
       setEvents(response.data.slice(0, 6));
     } catch (error) {
       console.log("Unable to load events");
@@ -69,10 +69,7 @@ function Home() {
                 >
                   <div className="event-image">
                     {event.image ? (
-                      <img
-                        src={`http://127.0.0.1:8000${event.image}`}
-                        alt={event.title}
-                      />
+                      <img src={`${API_URL}${event.image}`} alt={event.title} />
                     ) : (
                       <div className="no-image">{event.category}</div>
                     )}
@@ -103,7 +100,6 @@ function Home() {
                         View Details
                       </Link>
                     </div>
-
                   </div>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./OrganizerDashboard.css";
+import { API_URL } from "../../config"; // ← rendu dot
 
 function OrganizerDashboard() {
   const navigate = useNavigate();
@@ -24,9 +25,7 @@ function OrganizerDashboard() {
 
   const fetchDashboard = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/organizer/dashboard/",
-      );
+      const response = await axios.delete(`${API_URL}/api/events/${id}/`);
 
       setTotalEvents(response.data.total_events);
       setTotalBookings(response.data.total_bookings);

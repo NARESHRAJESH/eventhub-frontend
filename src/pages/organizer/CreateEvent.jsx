@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./CreateEvent.css";
+import { API_URL } from "../../config"; // ← rendu dot
 
 function CreateEvent() {
   const [eventData, setEventData] = useState({
@@ -21,37 +22,33 @@ function CreateEvent() {
     setEventData({
       ...eventData,
       [name]: files ? files[0] : value,
-    }); 
+    });
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const formData = new FormData();
+    const formData = new FormData();
 
-  formData.append("title", eventData.title);
-  formData.append("description", eventData.description);
-  formData.append("category", eventData.category);
-  formData.append("location", eventData.location);
-  formData.append("date", eventData.date);
-  formData.append("time", eventData.time);
-  formData.append("price", eventData.price);
-  formData.append("seats", eventData.seats);
-  formData.append("image", eventData.image);
+    formData.append("title", eventData.title);
+    formData.append("description", eventData.description);
+    formData.append("category", eventData.category);
+    formData.append("location", eventData.location);
+    formData.append("date", eventData.date);
+    formData.append("time", eventData.time);
+    formData.append("price", eventData.price);
+    formData.append("seats", eventData.seats);
+    formData.append("image", eventData.image);
 
-  try {
-    await axios.post(
-      "http://127.0.0.1:8000/api/events/",
-      formData
-    );
+    try {
+      await axios.post(`${API_URL}/api/events/`, formData);
 
-    alert("Event created successfully!");
-
-  } catch (error) {
-    console.error(error);
-    alert("Failed to create event.");
-  }
-};
+      alert("Event created successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to create event.");
+    }
+  };
 
   return (
     <div className="create-event-page">

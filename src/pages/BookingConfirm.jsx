@@ -17,8 +17,7 @@ function BookingConfirm() {
 
   const fetchEvent = async () => {
     try {
-      const response = awaitaxios.get(`${API_URL}/api/events/${id}/`);
-
+      const response = await axios.get(`${API_URL}/api/events/${id}/`);
       setEvent(response.data);
     } catch (error) {
       console.error("Error fetching event:", error);
@@ -28,7 +27,6 @@ function BookingConfirm() {
   const handleBooking = async (e) => {
     e.preventDefault();
 
-    // Login check — token illa na login page ku anuppu
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Please login before booking tickets.");

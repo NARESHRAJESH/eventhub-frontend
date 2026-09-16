@@ -16,8 +16,7 @@ function Booking() {
 
   const fetchEvent = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/my-bookings/`);
-
+      const response = await axios.get(`${API_URL}/api/events/${id}/`);
       setEvent(response.data);
     } catch (error) {
       console.error("Error fetching event:", error);
@@ -39,34 +38,26 @@ function Booking() {
         </div>
 
         <div className="booking-content">
-          {/* Event Information */}
           <div className="booking-event">
             {event.image && (
               <img
-                src={`http://127.0.0.1:8000${event.image}`}
+                src={`${API_URL}${event.image}`}
                 alt={event.title}
                 className="booking-event-image"
               />
             )}
 
             <h2>{event.title}</h2>
-
             <p>📅 {event.date}</p>
-
             <p>⏰ {event.time}</p>
-
             <p>📍 {event.location}</p>
-
             <p>🎟️ {event.seats} seats available</p>
 
             <hr />
-
             <h3>Ticket Price</h3>
-
             <p className="price">₹{event.price}</p>
           </div>
 
-          {/* Booking Summary */}
           <div className="booking-summary">
             <h2>Booking Summary</h2>
 
@@ -85,13 +76,11 @@ function Booking() {
 
             <div className="summary-row">
               <span>Ticket Price</span>
-
               <span>₹{event.price}</span>
             </div>
 
             <div className="summary-row">
               <span>Quantity</span>
-
               <span>{quantity}</span>
             </div>
 
@@ -99,7 +88,6 @@ function Booking() {
 
             <div className="total-row">
               <span>Total Amount</span>
-
               <strong>₹{totalAmount}</strong>
             </div>
 

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./OrganizerDashboard.css";
-import { API_URL } from "../../config"; // ← rendu dot
+import { API_URL } from "../../config";
 
 function OrganizerDashboard() {
   const navigate = useNavigate();
@@ -25,7 +25,13 @@ function OrganizerDashboard() {
 
   const fetchDashboard = async () => {
     try {
-      const response = await axios.delete(`${API_URL}/api/events/${id}/`);
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(`${API_URL}/api/organizer/dashboard/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
 
       setTotalEvents(response.data.total_events);
       setTotalBookings(response.data.total_bookings);
@@ -50,7 +56,14 @@ function OrganizerDashboard() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/events/${id}/`);
+      const token = localStorage.getItem("token");
+
+      await axios.delete(`${API_URL}/api/events/${id}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
       alert("Event deleted successfully!");
       fetchDashboard();
     } catch (error) {

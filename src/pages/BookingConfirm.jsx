@@ -76,7 +76,14 @@ function BookingConfirm() {
         <div className="booking-confirm-content">
           <div className="confirm-event">
             {event.image && (
-              <img src={`${API_URL}${event.image}`} alt={event.title} />
+              <img
+                src={
+                  event.image.startsWith("http")
+                    ? event.image
+                    : `${API_URL}${event.image}`
+                }
+                alt={event.title}
+              />
             )}
 
             <h2>{event.title}</h2>

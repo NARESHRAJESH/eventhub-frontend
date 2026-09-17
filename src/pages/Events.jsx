@@ -14,7 +14,6 @@ function Events() {
   const fetchEvents = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/events/`);
-
       setEvents(response.data);
     } catch (error) {
       console.error("Error fetching events:", error);
@@ -57,7 +56,14 @@ function Events() {
             <div className="event-card" key={event.id}>
               <div className="event-image">
                 {event.image && (
-                  <img src={`${API_URL}${event.image}`} alt={event.title} />
+                  <img
+                    src={
+                      event.image.startsWith("http")
+                        ? event.image
+                        : `${API_URL}${event.image}`
+                    }
+                    alt={event.title}
+                  />
                 )}
 
                 <span>{event.category}</span>

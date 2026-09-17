@@ -41,7 +41,11 @@ function Booking() {
           <div className="booking-event">
             {event.image && (
               <img
-                src={`${API_URL}${event.image}`}
+                src={
+                  event.image.startsWith("http")
+                    ? event.image
+                    : `${API_URL}${event.image}`
+                }
                 alt={event.title}
                 className="booking-event-image"
               />

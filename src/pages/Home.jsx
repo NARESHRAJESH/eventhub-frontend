@@ -69,7 +69,14 @@ function Home() {
                 >
                   <div className="event-image">
                     {event.image ? (
-                      <img src={`${API_URL}${event.image}`} alt={event.title} />
+                      <img
+                        src={
+                          event.image.startsWith("http")
+                            ? event.image
+                            : `${API_URL}${event.image}`
+                        }
+                        alt={event.title}
+                      />
                     ) : (
                       <div className="no-image">{event.category}</div>
                     )}

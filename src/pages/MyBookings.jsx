@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./MyBookings.css";
+import { API_URL } from "../config";
 
 function MyBookings() {
   const navigate = useNavigate();
@@ -20,9 +21,14 @@ function MyBookings() {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/my-bookings/",
-      );
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(`${API_URL}/api/my-bookings/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
       setBookings(response.data);
       setLoading(false);
     } catch (error) {

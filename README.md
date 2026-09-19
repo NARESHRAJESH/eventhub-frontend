@@ -181,7 +181,7 @@ DJANGO_SUPERUSER_PASSWORD=your_password
 ![Event Details](./public/screenshots/Event-Details.png)
 
 ### 🎫 My Bookings
-![My Bookings](./public/screenshots/My-Bookings.png)
+![My Bookings](./public/screenshots/My-bookings.png)
 
 ### 📊 Organizer Dashboard
 ![Organizer Dashboard](./public/screenshots/Dashboard.png)

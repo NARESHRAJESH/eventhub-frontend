@@ -175,16 +175,16 @@ DJANGO_SUPERUSER_PASSWORD=your_password
 ![Home Page](./public/screenshots/Home.png)
 
 ### 🎉 Events Page
-![Events Page](./public/screenshots/events.png)
+![Events Page](./public/screenshots/Events.png)
 
 ### 📋 Event Details
-![Event Details](./public/screenshots/event-details.png)
+![Event Details](./public/screenshots/Event-Details.png)
 
 ### 🎫 My Bookings
-![My Bookings](./public/screenshots/my-bookings.png)
+![My Bookings](./public/screenshots/My-Bookings.png)
 
 ### 📊 Organizer Dashboard
-![Organizer Dashboard](./public/screenshots/dashboard.png)
+![Organizer Dashboard](./public/screenshots/Dashboard.png)
 
 ---
 

@@ -167,6 +167,31 @@ DJANGO_SUPERUSER_PASSWORD=your_password
 
 ---
 
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](./public/screenshots/Home.png)
+
+### 🎉 Events Page
+![Events Page](./public/screenshots/events.png)
+
+### 📋 Event Details
+![Event Details](./public/screenshots/event-details.png)
+
+### 🎫 My Bookings
+![My Bookings](./public/screenshots/my-bookings.png)
+
+### 📊 Organizer Dashboard
+![Organizer Dashboard](./public/screenshots/dashboard.png)
+
+---
+
+
+
+
+
 ## 🎨 Design System
 
 - **Colors:** Rose + Slate palette
